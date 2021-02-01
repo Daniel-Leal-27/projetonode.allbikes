@@ -2,6 +2,10 @@
 
 const express = require('express'); //puxando/requerindo módulo express
 const App = express();
+const bodyParser =require('body-parser');
+App.use(bodyParser.urlencoded({extended : true }))
+
+App.set('view engine', 'ejs') //configuração para mostrar o formulário na tela
 
 const caminho = require('./routes') //exportei a rota (caminho) do arquivo routes.js
 App.use(caminho);

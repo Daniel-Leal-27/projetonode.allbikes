@@ -1,3 +1,40 @@
 npm init 
 npm install express EJS --save
 npm install nodemon --global --save
+
+                <td><% dados[i].id_itens %> </td>
+                <td><% dados[i].nome %> </td>
+                <td><% dados[i].categoria %> </td>
+                <td><% dados[i].quantidade %> </td>
+                <td><% dados[i].valor_unitario %> </td>
+
+
+<div class="container ">
+    <table class="table table-striped container ">
+        <!--cabeçario-->
+        <thead>
+            <th class="text-light bg-dark">Cd. cadastro</th>
+            <th>Nome</th>
+            <th class="text-light bg-dark">Categoria</th>
+            <th>Quantidade</th>
+            <th class="text-light bg-dark">Valor Unitario</th>
+            <th>Descrição</th>
+        </thead>
+        <tbody> 
+            <% for(let i=0; i<dados.length; i++){  %>       
+                <tr>
+                    <td class="text-light bg-dark"><%=dados[i].id_produtos%></td>
+                    <td> <%=dados[i].nome%>   
+                        <form action="/produtos/id=<%=dados[i].id_produtos%>"  method="post" >
+                        <button class="btn  btn-outline-danger mt-3" type="submit" > Delete</button>
+                        </form> 
+                    </td>
+                    <td class="text-light bg-dark"><%=dados[i].categoria%> </td>
+                    <td><%=dados[i].quantidade%></td>
+                    <td class="text-light bg-dark"><%=dados[i].valor_unitario%></td>
+                    <td><%=dados[i].descricao%></td>       
+                </tr>      
+                <% } %>
+        </tbody>
+    </table>
+</div> 

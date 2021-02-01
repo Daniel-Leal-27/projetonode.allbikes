@@ -1,11 +1,14 @@
 const express = require('express');
 const caminho = express.Router() //é uma função do express para gerenciar rotas
-;
-caminho.get("/", (req,res) => {
-    res.send("Seja bem-vindo, Thalis")
-})
-//req = requerindo
-//res = respondendo
+const sql = require('./controles/index')
+
+caminho.get("/", sql.mostrando_itens)
+
+caminho.post("/", sql.enviando_itens)
+
+
+
+
 
 module.exports = caminho;
 

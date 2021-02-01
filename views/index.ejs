@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Verão</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body class="bg-warning">
+    <div class="container">
+        <div class="card shadow p-3 mb-5 bg-white rounded ">
+            <div class="card-header bg-danger text-dark">
+                <h1>Cadastre seus itens</h1>
+            </div>
+
+            <div class="card-body text-secondary ">
+               <form  action="/" method="POST" > 
+                <!--o name tem que ser igual ao do banco de dados-->
+                        <label for="nome" class="text-monospace  " >Produto</label>
+                        <input class="form-control " type="text" id="nome" name="nome" placeholder="nome do produto">
+                        <br/>
+
+                        <label for="nome" class="text-monospace " >Valor Unitario</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text bg-danger">R$</span>
+                            </div>
+                            <input type="number"  name="valor_unitario" id="valor_unitario"   aria-label="Quantia">
+                            <div class="input-group-append">
+                              <span class="input-group-text bg-danger">.00</span>
+                            </div>
+                          </div>
+                      
+                        <br/>
+                        <label for="quantidade"  class="text-monospace " >Quantidade</label>
+                        <input class="form-control" type="number" id="quantidade" name="quantidade" />
+                        <br/><br/>
+                    
+                        <label for="quantidade"  class="text-monospace " >Categorias</label>
+                          <select class="custom-select"  name="categoria" id="categoria">
+                            <option selected>Selecione ...</option>
+                            <option value="bicicleta">Bicicleta</option>
+                            <option value="farol">Farol</option>
+                            <option value="cronômetro">Cronômetro</option>
+                            <option value="buzina">Buzina</option>
+                            <option value="outros">Outros</option>
+                          </select>
+                          <br/><br/>
+
+                         <br/><br/>
+                        <button type="submit"   class="btn btn-outline-primary mt-3"  > Cadastro </button>         
+               </form> 
+            </div>
+        </div>   
+    </div>
+
+    <br/><br/><br/>
+
+    <h1 class="container">Retornando itens:</h1>
+    <div class="container">
+      <table class='table bg-white'>
+        <thead>
+          <th class='text-monospace text-primary'>
+            Código do Item
+          </th>
+          <th class='text-monospace text-primary'>
+            Nome
+          </th>
+          <th class='text-monospace text-primary'>
+            Categoria
+          </th>
+          <th class='text-monospace text-primary'>
+            Quantidade
+          </th>
+          <th class='text-monospace text-primary'>
+            Valor unitário
+          </th>
+        </thead>
+        <tbody>
+          <% for (let i = 0; i<dados.length; i++) { %>
+            <tr>
+              <td class="text-light bg-dark "><%=dados[i].id_itens %> </td>
+              <td class="text-dark bg-light"><%=dados[i].nome %> 
+
+               </td>
+              <td class="text-light bg-dark"><%=dados[i].categoria %> </td>
+              <td class="text-dark bg-light" ><%=dados[i].quantidade %> </td>
+              <td class="text-light bg-dark"><%=dados[i].valor_unitario %> </td>
+            </tr>
+            <% } %> 
+        </tbody>
+      </table>
+    </div>
+    <h3 class="container-fluid text-dark text-center ">Allbikes producer</h3>
+</body>
+</html>
+
